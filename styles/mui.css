@@ -1,0 +1,9 @@
+/* MUIの上書き用 */
+
+.MuiDataGrid-root .MuiDataGrid-container--top [role=row] {
+  background-color: #009A62 !important;
+}
+
+.MuiDataGrid-columnHeaderTitleContainer {
+  color: #f0f9f1;
+}
