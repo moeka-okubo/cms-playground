@@ -10,6 +10,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>ここ何書くか悩む、/usersとか持ってきてもいいかも</div>
+      <div>現状サイドメニューの導線、現状社員一覧だけありまする</div>
     </>
   );
 }

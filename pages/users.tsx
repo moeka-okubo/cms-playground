@@ -75,8 +75,7 @@ const rows: Record<string, string | number | null | ReactNode>[] = [
 const Users = () => {
   const router = useRouter();
 
-  const DetailButton = (props: { id: number }) => {
-    const { id } = props;
+  const DetailButton = ({ id }) => {
     return (
       <DefaultButton text="詳細" onClick={() => router.push(`/user/${id}`)} />
     );
@@ -126,11 +125,14 @@ const Users = () => {
   return (
     <>
       <h1>社員一覧</h1>
-      <DataTable
-        rows={rows}
-        columns={columns}
-        paginationModel={paginationModel}
-      />
+      <DefaultButton text="社員追加" onClick={() => router.push("/user/add")} />
+      <div style={{ marginTop: 8 }}>
+        <DataTable
+          rows={rows}
+          columns={columns}
+          paginationModel={paginationModel}
+        />
+      </div>
     </>
   );
 };

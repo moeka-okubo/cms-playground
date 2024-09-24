@@ -7,10 +7,11 @@ const SideMenu = () => {
   return (
     <div
       style={{
+        position: "fixed",
+        left: 0,
         height: "100vh",
         backgroundColor: "#009A62",
         color: "#f0f9f1",
-        overflowY: "auto",
       }}
     >
       <div

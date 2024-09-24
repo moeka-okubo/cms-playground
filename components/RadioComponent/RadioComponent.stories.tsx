@@ -3,64 +3,58 @@ import { Meta, StoryObj } from "@storybook/react";
 import RadioComponent from "./RadioComponent";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm, FieldValues, Control, FieldErrors } from "react-hook-form";
+import { useForm, Control, FieldErrors } from "react-hook-form";
 
 const meta: Meta<typeof RadioComponent> = {
   title: "Components/RadioComponent",
   component: RadioComponent,
-  parameters: {
-    layout: "centered",
-  },
+  parameters: { layout: "centered" },
   tags: ["autodocs"],
 };
 
 export default meta;
 
-type Story = StoryObj<typeof RadioComponent>;
-
 const schema = z.object({ default: z.string() });
+const options = [
+  { value: "1", label: "はい" },
+  { value: "0", label: "いいえ" },
+];
 
+type Story = StoryObj<typeof RadioComponent>;
 type FormData = z.infer<typeof schema>;
 
-function FormWrapper<T extends FieldValues>({
-  children,
-  fieldName,
-}: {
+type FormWrapperProps = {
   children: (props: {
-    control: Control<T>;
-    error: FieldErrors<T>[keyof T];
+    control: Control<FormData>;
+    error: FieldErrors<FormData>["default"];
   }) => React.ReactElement;
-  fieldName: keyof T;
-}) {
+};
+
+function FormWrapper({ children }: FormWrapperProps) {
   const {
     control,
     formState: { errors },
-  } = useForm<T>({
+  } = useForm<FormData>({
     resolver: zodResolver(schema),
     mode: "onChange",
-    defaultValues: { default: "0" } as any,
+    defaultValues: { default: "0" },
   });
 
-  return children({ control, error: errors[fieldName] });
+  return children({ control, error: errors.default });
 }
 
 export const Default: Story = {
   render: (args) => (
-    <FormWrapper<FormData> fieldName="default">
-      {(formProps) => (
+    <FormWrapper>
+      {({ control, error }) => (
         <RadioComponent<FormData>
           {...args}
-          {...formProps}
+          control={control}
+          error={error}
           fieldName="default"
         />
       )}
     </FormWrapper>
   ),
-  args: {
-    label: "デフォルト",
-    options: [
-      { value: "1", label: "はい" },
-      { value: "0", label: "いいえ" },
-    ],
-  },
+  args: { label: "デフォルト", options: options },
 };

@@ -33,7 +33,7 @@ export default function RequiredForm() {
   } = useForm<FormData>({
     resolver: zodResolver(userSchema),
     mode: "onChange",
-    defaultValues: { name: "", isConnectKpas: "yes", group: "1" },
+    defaultValues: { name: "", isConnectKpas: "no", group: "1" },
   });
 
   const onSubmit = (data: FormData) => {
@@ -69,6 +69,11 @@ export default function RequiredForm() {
       />
 
       <ImageUpload altText="顔写真" buttonText="顔写真を追加" />
+      <ImageUpload
+        altText="社員図鑑の画像"
+        buttonText="社員図鑑の画像"
+        canDelete
+      />
       <DefaultButton text="登録" onClick={handleSubmit(onSubmit)} />
     </>
   );

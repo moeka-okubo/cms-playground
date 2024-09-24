@@ -12,7 +12,9 @@ export default function App({ Component, pageProps }: AppProps) {
       <main
         style={{
           flex: 1,
+          minHeight: "100vh",
           backgroundColor: "#f0f9f1",
+          marginLeft: "190px",
           padding: "40px",
           overflowY: "auto",
         }}

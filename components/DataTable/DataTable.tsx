@@ -1,17 +1,16 @@
 import { Paper } from "@mui/material";
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { DataGrid, GridColDef, GridRowsProp } from "@mui/x-data-grid";
 import { jaJP } from "@mui/x-data-grid/locales";
-import { memo, ReactNode } from "react";
+import { memo } from "react";
 
 type Props = {
-  rows: Record<string, string | number | null | ReactNode>[];
+  rows: GridRowsProp;
   columns: GridColDef[];
   // pagination系不要であれば削除する
-  paginationModel: { page: number; pageSize: number };
+  paginationModel?: { page: number; pageSize: number };
 };
 
-const DataTable = (props: Props) => {
-  const { rows, columns } = props;
+const DataTable = ({ rows, columns, paginationModel }: Props) => {
   return (
     <Paper sx={{ width: "100%" }}>
       <DataGrid
