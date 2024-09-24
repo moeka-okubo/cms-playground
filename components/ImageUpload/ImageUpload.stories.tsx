@@ -4,9 +4,7 @@ import ImageUpload from "./ImageUpload";
 const meta: Meta<typeof ImageUpload> = {
   title: "Components/ImageUpload",
   component: ImageUpload,
-  parameters: {
-    layout: "centered",
-  },
+  parameters: { layout: "centered" },
   tags: ["autodocs"],
 };
 

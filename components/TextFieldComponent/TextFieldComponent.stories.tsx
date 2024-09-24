@@ -3,7 +3,13 @@ import { Meta, StoryObj } from "@storybook/react";
 import TextFieldComponent from "./TextFieldComponent";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm, FieldValues, Control, FieldErrors } from "react-hook-form";
+import {
+  useForm,
+  FieldValues,
+  Control,
+  FieldErrors,
+  DefaultValues,
+} from "react-hook-form";
 
 const meta: Meta<typeof TextFieldComponent> = {
   title: "Components/TextFieldComponent",
@@ -33,6 +39,13 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
+const defaultValues: FormData = {
+  default: "",
+  required: "",
+  minLength: "テストてすと",
+  number: "",
+};
+
 function FormWrapper<T extends FieldValues>({
   children,
   fieldName,
@@ -49,12 +62,7 @@ function FormWrapper<T extends FieldValues>({
   } = useForm<T>({
     resolver: zodResolver(schema),
     mode: "onChange",
-    defaultValues: {
-      default: "",
-      required: "",
-      minLength: "テストてすと",
-      number: 0,
-    } as any,
+    defaultValues: defaultValues as unknown as DefaultValues<T>,
   });
 
   return children({ control, error: errors[fieldName] });

@@ -10,6 +10,19 @@
 ✔ Would you like to customize the default import alias (@/*)? … *No / Yes
 ```
 
+## ローカル起動の仕方
+cloneした後に `npm install` した後
+- `npm run dev` → ローカル環境
+- `npm run storybook` → Storybook
+が起動します
+
+なんかうまくいかんかったらpackage-lock.jsonを消した後にnpm installをしてみてください。  
+それでもうまくいかんかったら分からないです...ｽﾐﾏｾﾝ🥺
+
+
+ここからテンプレ
+---
+---
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

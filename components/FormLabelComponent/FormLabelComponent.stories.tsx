@@ -4,6 +4,8 @@ import FormLabelComponent from "./FormLabelComponent";
 const meta: Meta<typeof FormLabelComponent> = {
   title: "Components/FormLabelComponent",
   component: FormLabelComponent,
+  parameters: { layout: "centered" },
+  tags: ["autodocs"],
 };
 
 export default meta;
